@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abantari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abantari <abantari@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 15:12:26 by abantari          #+#    #+#             */
-/*   Updated: 2025/11/21 15:12:27 by abantari         ###   ########.fr       */
+/*   Created: 2025/11/25 16:08:42 by abantari          #+#    #+#             */
+/*   Updated: 2025/11/25 16:08:42 by abantari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strjoin(char *buff, char *saved)
 
 	if (!buff || !saved)
 		return (NULL);
-	str = malloc(ft_strlen(buff); + ft_strlen(saved); + 1);
+	str = malloc(ft_strlen(buff) + ft_strlen(saved) + 1);
 	if (!str)
 		return (NULL);
 	i = 0;

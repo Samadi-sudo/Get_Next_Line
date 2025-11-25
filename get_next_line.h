@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abantari <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abantari <abantari@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 15:12:09 by abantari          #+#    #+#             */
-/*   Updated: 2025/11/21 15:12:13 by abantari         ###   ########.fr       */
+/*   Created: 2025/11/25 16:08:51 by abantari          #+#    #+#             */
+/*   Updated: 2025/11/25 16:08:51 by abantari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ char	*get_next_line(int fd);
 
 // utils
 size_t	ft_strlen(char *str);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *buff, char *saved);
+char	*ft_strdup(const char *s);
+
 
 //get_next_line_bonus
 
