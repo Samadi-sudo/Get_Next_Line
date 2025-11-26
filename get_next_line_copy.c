@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_copy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abantari <abantari@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abantari <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/25 16:08:32 by abantari          #+#    #+#             */
-/*   Updated: 2025/11/25 16:08:32 by abantari         ###   ########.fr       */
+/*   Created: 2025/11/26 10:51:17 by abantari          #+#    #+#             */
+/*   Updated: 2025/11/26 10:51:18 by abantari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*extract_line(char *stash)
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	line = malloc(i + (stash[i] == '\n') + 1);
+	line = malloc(i + (stash[i] != '\n') + 1);
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -47,11 +47,8 @@ static char	*clean_stash(char *stash)
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (!stash[i])
-	{
-		free(stash);
-		return (NULL);
-	}
-	new = malloc(gnl_strlen(stash) - i + 1);
+		return (free(stash), NULL);
+	new = malloc(gnl_strlen(stash) - i);
 	if (!new)
 		return (NULL);
 	i++;
@@ -66,13 +63,13 @@ static char	*clean_stash(char *stash)
 char	*get_next_line(int fd)
 {
 	static char	*stash;
-	char		*buffer;
-	ssize_t		bytes_read;
-	char		*line;
+	char	*buffer;
+	ssize_t	bytes_read;
+	char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
@@ -87,12 +84,7 @@ char	*get_next_line(int fd)
 	free(buffer);
 	line = extract_line(stash);
 	if (!line)
-		return (free(stash), stash = NULL, NULL);
+		return(free(stash), stash = NULL, NULL);
 	stash = clean_stash(stash);
-	if (stash && stash[0] == '\0')
-	{
-		 free(stash);
-		 stash = NULL;
-	}
 	return (line);
 }

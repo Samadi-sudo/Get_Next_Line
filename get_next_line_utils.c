@@ -26,7 +26,7 @@ size_t	gnl_strlen(const char *s)
 
 int	gnl_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
 	if (!s)
 		return (0);
